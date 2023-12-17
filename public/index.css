@@ -3,7 +3,7 @@ body {
             rgb(5, 51, 63), rgb(17, 69, 82), rgb(32, 80, 48), rgb(2, 93, 116));
     background-size: 400% 400%;
     animation: bg 12s ease infinite; */
-    background-color: rgba(0, 0, 0, 0.445);
+    /* background-color: rgba(0, 0, 0, 0.445); */
 }
 
 @keyframes bg {
@@ -57,16 +57,18 @@ body {
 
 .form {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-    /* background-color: rgb(54, 55, 56); */
-    color: white;
+    background-color: white;
+    color: black;
+    /* color: white; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 860px;
+    width: 390px;
     margin-left: 18%;
     margin-top: 20px;
     margin-bottom: 20px;
     /* border: 1px solid black; */
+
     border-radius: 10px;
     padding: 10px;
 }
