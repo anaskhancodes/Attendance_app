@@ -55,7 +55,7 @@
 
             const firstName = document.querySelector("#firstName").value;
             const lastName = document.querySelector("#lastName").value;
-            const email = document.querySelector("#email").value;
+            const email = document.querySelector("  #email").value;
             const password = document.querySelector("#password").value;
 
             try {
@@ -71,7 +71,7 @@
                 if (response.status === 200) {
                     console.log("Signup successful");
 
-                    window.location.href = "/index.html";
+                    window.location.href = "./index.html";
                 }
             } catch (e) {
                 console.log(e);

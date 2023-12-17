@@ -7,9 +7,28 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="indev.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-            crossorigin="anonymous" referrerpolicy="no-referrer" />
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Document</title>
+    <style>
+        .popup-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ccc;
+            z-index: 999;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Show the popup form */
+        .popup-form.show-form {
+            display: block;
+        }
+    </style>
 </head>
 
 <body onload="getAllPost()">
@@ -17,36 +36,42 @@
 
     <!-- <button class="del-btn" onclick="delPost('${eachPost._id}')">Delete</button>
     <button class="edit-btn" onclick="editPost('${eachPost._id}','${eachPost.text}','${eachPost.title}')">Edit</button> -->
+    <div class="user-attendence">
+        <h2><i class="fa-regular fa-user" style="color: #ffffff;"></i> Student</h2>
+        <button onclick="toggleForm()">Add Student</button>
+    </div>
 
-    <form class="form" onsubmit="createPost(); return false">
-        <label for="firstName">First name</label>
-        <br>
-        <input name="" type="text" id="firstName">
-        <br>
+    <div id="popupForm" class="popup-form">
+        <form class="form" onsubmit="createPost(); return false">
+            <label for="firstName">First name</label>
+            <br>
+            <input name="" type="text" id="firstName">
+            <br>
 
-        <label for="lastName">Last name</label>
-        <br>
-        <input type="text" id="lastName">
+            <label for="lastName">Last name</label>
+            <br>
+            <input type="text" id="lastName">
 
-        <label for="">course</label>
-        <br>
-        <input type="text" name="" id="course">
+            <label for="">course</label>
+            <br>
+            <input type="text" name="" id="course">
 
-        <label for="">email</label>
-        <br>
-        <input type="email" name="" id="email"> 
+            <label for="">email</label>
+            <br>
+            <input type="email" name="" id="email">
 
 
-        <br><br>
+            <br><br>
 
-        <button type="submit">Add</button>
+            <button type="submit">Add</button>
 
-        <br>
-        <br>
-    </form>
+            <br>
+            <br>
+        </form>
+    </div>
 
     <div class="user-attendence">
-        <h2> <i class="fa-regular fa-user" style="color: #ffffff;"></i> Student </h2> 
+        <h2> <i class="fa-regular fa-user" style="color: #ffffff;"></i> Student </h2>
         <a href="./add-student.html"><i class="fa-solid fa-plus" style="color: rgb(0, 89, 255);"></i> Add Student</a>
     </div>
     <div class="list">
@@ -66,6 +91,11 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
+
+        function toggleForm() {
+            const popup = document.getElementById('popupForm');
+            popup.classList.toggle('show-form');
+        }
 
         window.createPost = function () {
 
@@ -127,7 +157,7 @@
                                  <p>${eachPost.email}</p>
                             </div>
                             <br />`
-                         })
+                    })
                     // 
                     document.querySelector("#post").innerHTML = postHTML;
                 })
