@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="indev.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+            
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+</head>
+
+<body onload="getAllPost()">
+    <div class="add-std-attendence">
+        <h2> <i class="fa-solid fa-arrow-left" style="color: #000000;"></i> Add Student </h2> 
+        
+    </div>
+    <div class="form-std">
+        <form class="form" onsubmit="createPost(); return false">
+            <label for="firstName">First name</label>
+            <br>
+            <input name="" type="text" id="firstName">
+            <br>
+    
+            <label for="lastName">Last name</label>
+            <br>
+            <input type="text" id="lastName">
+    
+            <label for="">course</label>
+            <br>
+            <input type="text" name="" id="course">
+    
+            <label for="">email</label>
+            <br>
+            <input type="email" name="" id="email"> 
+    
+    
+            <br><br>
+    
+            <button type="submit">Add</button>
+    
+            <br>
+            <br>
+        </form>
+    </div>
+</body>
+
+</html>

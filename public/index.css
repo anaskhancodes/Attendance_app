@@ -1,0 +1,123 @@
+body {
+    /* background: linear-gradient(-40deg, rgb(12, 3, 61),
+            rgb(5, 51, 63), rgb(17, 69, 82), rgb(32, 80, 48), rgb(2, 93, 116));
+    background-size: 400% 400%;
+    animation: bg 12s ease infinite; */
+    background-color: rgba(0, 0, 0, 0.445);
+}
+
+@keyframes bg {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 100%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+.post-card {
+    background-color: rgb(36, 37, 38);
+    color: white;
+    padding: 15px;
+    width: 500px;
+    margin-left: 30%;
+    margin-top: 50px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.title-time {
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+}
+
+.title-time h2 {
+    width: 360px;
+    padding: 8px;
+    font-size: 20px;
+}
+
+.title-time .post-time {
+    margin-top: 30px;
+}
+
+.post-text {
+    background-color: rgb(54, 55, 56);
+    padding: 10px;
+    border-radius: 7px;
+}
+
+
+.form {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* background-color: rgb(54, 55, 56); */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 860px;
+    margin-left: 18%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    padding: 10px;
+}
+
+label {
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+#postText,
+#postTitle {
+    overflow-y: hidden;
+    resize: none;
+    padding: 10px;
+}
+
+form button {
+    padding: 10px;
+    width: 150px;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #1a77fe;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.del-btn {
+    padding: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.edit-btn {
+    padding: 10px;
+    background-color: rgb(3, 255, 3);
+    color: rgb(0, 0, 0);
+    border: none;
+    width: 60px;
+    cursor: pointer;
+}
+
+.edit-form {
+    /* background-color: none; */
+    border: none;
+    box-shadow: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}

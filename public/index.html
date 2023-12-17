@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="indev.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+
+<body onload="getAllPost()">
+
+
+    <!-- <button class="del-btn" onclick="delPost('${eachPost._id}')">Delete</button>
+    <button class="edit-btn" onclick="editPost('${eachPost._id}','${eachPost.text}','${eachPost.title}')">Edit</button> -->
+
+    <form class="form" onsubmit="createPost(); return false">
+        <label for="firstName">First name</label>
+        <br>
+        <input name="" type="text" id="firstName">
+        <br>
+
+        <label for="lastName">Last name</label>
+        <br>
+        <input type="text" id="lastName">
+
+        <label for="">course</label>
+        <br>
+        <input type="text" name="" id="course">
+
+        <label for="">email</label>
+        <br>
+        <input type="email" name="" id="email"> 
+
+
+        <br><br>
+
+        <button type="submit">Add</button>
+
+        <br>
+        <br>
+    </form>
+
+    <div class="user-attendence">
+        <h2> <i class="fa-regular fa-user" style="color: #ffffff;"></i> Student </h2> 
+        <a href="./add-student.html"><i class="fa-solid fa-plus" style="color: rgb(0, 89, 255);"></i> Add Student</a>
+    </div>
+    <div class="list">
+        <p>id</p>
+        <p>Profil img</p>
+        <p>Name</p>
+        <p>Course Name</p>
+        <p>Email</p>
+    </div>
+
+    <div id="result"></div>
+    <br>
+    <div id="post"></div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        window.createPost = function () {
+
+            let firstName = document.querySelector("#firstName").value;
+            let lastName = document.querySelector("#lastName").value;
+            let email = document.querySelector("#email").value;
+            let course = document.querySelector("#course").value;
+
+
+            axios.post(`/api/v1/post`, {
+                firstName: firstName,
+                lastName: lastName,
+                course: course,
+                email: email,
+            })
+                .then(function (response) {
+                    // handle success 
+                    console.log(response.data);
+                    document.querySelector("#result").innerHTML = response.data;
+                    getAllPost();
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error.data);
+                    // document.querySelector("#result").innerHTML = "error in post submision"
+                })
+        }
+
+        window.getAllPost = function () {
+
+            axios.get(`/api/v1/posts`, {
+                withCredentials: true
+            })
+                .then(function (response) {
+                    // handle success 
+                    console.log(response.data);
+
+                    let postHTML = ``
+                    // 
+                    response.data.map((eachPost) => {
+                        const timeAgo = moment(eachPost.createdOn).fromNow();
+
+                        // <div class="title-time">
+                        //             <h2 class="post-title">${eachPost.firstName} </h2>
+                        //             <p class="post-time">${timeAgo}</p>
+                        //         </div>
+                        //         <p class="post-text">${eachPost.lastName}</p> 
+                        //         <p class="post-text">${eachPost.email}</p> 
+                        //         <p class="post-text">${eachPost.course}</p> 
+                        //         </br>
+
+                        postHTML +=
+                            `<div class="std-list" id="card-${eachPost._id}">
+                                <p>1</p>
+                                <p><i class="fa-regular fa-user" style="color: #ffff;"></i></p>
+                                  <p>${eachPost.firstName}</p>
+                                 <p>${eachPost.course}</p>
+                                 <p>${eachPost.email}</p>
+                            </div>
+                            <br />`
+                         })
+                    // 
+                    document.querySelector("#post").innerHTML = postHTML;
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error.response.status);
+
+                    if (error.response.status === 401) {
+                        window.location.href = "/login.html";
+                    }
+
+                    document.querySelector("#post").innerHTML = "error in post submision"
+                })
+        }
+
+
+        window.delPost = function (postId) {
+
+            console.log("delete", postId)
+
+            axios.delete(`/api/v1/post/${postId}`)
+                .then(function (response) {
+                    // handle success 
+                    console.log(response.data);
+
+                    getAllPost();
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error.data);
+                    document.querySelector("#post").innerHTML = "error in post submision"
+                })
+        }
+
+        window.editPost = (postId, text, title) => {
+
+            console.log("edit", postId);
+
+            document.querySelector(`#card-${postId}`).innerHTML =
+                `<form class="edit-form" onsubmit="savePost('${postId}')">
+
+                    Title: <input type = "text" value ="${title}" id="title-${postId}"/>  
+                    <br />  
+                    Text: <input type = "text" value ="${text}" id="text-${postId}"/>
+                    <br />  
+                    <button>Save</button>
+              </form>`
+        }
+
+        window.savePost = (postId) => {
+            const updatedFirstName = document.querySelector(`#firstname-${postId}`).value;
+            const updatedLastName = document.querySelector(`#lastname-${postId}`).value;
+
+
+            axios.put(`/api/v1/post/${postId}`, {
+                title: updatedFirstName,
+                text: updatedLastName
+            })
+
+                .then(function (response) {
+                    // handle success 
+                    console.log(response.data);
+                    // getAllPost();
+
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error.data);
+                    document.querySelector("#result").innerHTML = "error in post submision"
+                })
+
+        }
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="updateName.js"></script>
+</body>
+
+</html>

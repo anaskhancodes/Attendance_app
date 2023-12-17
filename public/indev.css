@@ -1,0 +1,117 @@
+.user-attendence {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: #333; */
+    padding: 10px;
+    /* Adding padding for better spacing */
+}
+
+.user-attendence i {
+    background-color: rgb(0, 89, 255);
+    padding: 15px;
+    border-radius: 40px;
+    margin-right: 10px;
+    /* Adjusted margin for better spacing */
+}
+
+.user-attendence a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(0, 89, 255);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+.user-attendence a i {
+    padding: 5px;
+    border-radius: 40px;
+    margin-right: 10px;
+    /* Adjusted margin for better spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+
+}
+
+h2 {
+    margin: 0;
+    /* Removing default margin on h2 */
+
+}
+
+.list {
+    background-color: rgb(0, 89, 255);
+    display: flex;
+    justify-content: space-around;
+    color: white;
+}
+
+.std-list {
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    /* color: white; */
+}
+
+/* /////////////////////////////////// */
+.form-std {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+}
+
+form {
+    width: 270px;
+    /* background-color: aquamarine; */
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+form input {
+    width: 200px;
+    margin-left: 20px;
+}
+
+form label {
+    width: 200px;
+    margin-left: 20px;
+}
+
+.add-std-attendence {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: #333; */
+    padding: 10px;
+    /* Adding padding for better spacing */
+}
+
+.add-std-attendence a i {
+    padding: 5px;
+    border-radius: 40px;
+    margin-right: 10px;
+    /* Adjusted margin for better spacing */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+
+}
+
+form a {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(0, 89, 255);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}

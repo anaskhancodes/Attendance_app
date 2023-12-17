@@ -1,0 +1,71 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(-40deg, rgb(66, 37, 235),
+            rgb(13, 111, 136), rgb(42, 166, 197), rgb(87, 212, 129), rgb(0, 204, 255));
+    background-size: 400% 400%;
+    animation: bg 12s ease infinite;
+}
+
+@keyframes bg {
+    0% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 100%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  
+  }
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: brown;
+    position: absolute;
+}
+
+div {
+    margin-top: 115px;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+form {
+    /* background-color: rgb(3, 180, 180); */
+    padding: 20px;
+    width: 405px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+form input {
+    width: 380px;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    /* border-bottom: 2px solid black; */
+}
+
+form label{
+    color: white;
+}
+
+form button {
+    padding: 10px;
+    margin-left: 150px;
+    width: 100px;
+    font-weight: 800;
+}
