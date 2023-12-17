@@ -116,10 +116,10 @@
             let course = document.querySelector("#course").value;
 
 
-            axios.post(`/api/v1/post`, {
+           axios.post(`/api/v1/post`, {
                 firstName: firstName,
                 lastName: lastName,
-                course: course,
+                 course: course,
                 email: email,
             })
                 .then(function (response) {

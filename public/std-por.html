@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Mark</title>
+    <style>
+        body {
+            margin: 0%;
+            padding: 0%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: 400% 400%;
+            animation: bg 12s ease infinite;
+            background-color: rgb(113, 49, 197);
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: rgb(255, 194, 194);
+            position: absolute;
+        }
+
+        div {
+            margin-top: 115px;
+        }
+
+        h1 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+
+        form {
+            /* background-color: rgb(3, 180, 180); */
+            padding: 20px;
+            width: 405px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        }
+
+        form input {
+            width: 380px;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 10px;
+            /* border-bottom: 2px solid black; */
+        }
+
+        form label {
+            color: white;
+        }
+
+        form button {
+            padding: 10px;
+            margin-left: 150px;
+            width: 100px;
+            font-weight: 800;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1>Attendance Mark</h1>
+
+        <form class="form" onsubmit="createPost(); return false">
+            <label for="firstName">First name</label>
+            <br>
+            <input name="" type="text" id="firstName">
+            <br><br>
+
+            <label for="lastName">Last name</label>
+            <br>
+            <input type="text" id="lastName"><br><br>
+
+            <label for="">course</label>
+            <br>
+            <input type="text" name="" id="course"><br><br>
+
+            <label for="">ID</label>
+            <br>
+            <input type="text" name="" id="ID"><br><br>
+            <label for="">Date</label>
+            <br>
+            <input type="date" name="" id="date">
+
+            <br><br>
+
+            <button type="submit">Check IN</button>
+
+            <br>
+            <br>
+        </form>
+    </div>
+
+    <div id="result"></div>
+    <br>
+    <div id="post"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        window.createPost = function () {
+
+            let firstName = document.querySelector("#firstName").value;
+            let lastName = document.querySelector("#lastName").value;
+            let id = document.querySelector("#ID").value;
+            let course = document.querySelector("#course").value;
+            let date = document.querySelector("#date").value;
+
+            axios.post(`/api/v1/poststd`, {
+                firstName: firstName,
+                lastName: lastName,
+                id: id,
+                course: course,
+                date: date,
+            })
+
+                .then(function (response) {
+                    // handle success 
+                    console.log(response.data);
+                    document.querySelector("#result").innerHTML = response.data;
+                    getAllPost();
+                })
+                .catch(function (error) {
+                    // handle error
+                    console.log(error.data);
+                    // document.querySelector("#result").innerHTML = "error in post submision"
+                })
+        }
+    </script>
+
+</body>
+
+</html>

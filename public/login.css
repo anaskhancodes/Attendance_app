@@ -4,31 +4,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(-40deg, rgb(66, 37, 235),
-            rgb(13, 111, 136), rgb(42, 166, 197), rgb(87, 212, 129), rgb(0, 204, 255));
     background-size: 400% 400%;
     animation: bg 12s ease infinite;
+    background-color: rgb(113, 49, 197);
 }
 
-@keyframes bg {
-    0% {
-      background-position: 0% 50%;
-    }
-  
-    50% {
-      background-position: 100% 100%;
-    }
-  
-    100% {
-      background-position: 0% 50%;
-    }
-  
-  }
 
 .box {
     width: 100px;
     height: 100px;
-    background-color: brown;
+    background-color: rgb(255, 194, 194);
     position: absolute;
 }
 
@@ -56,6 +41,7 @@ form input {
     padding: 10px;
     margin-top: 10px;
     border: none;
+    border-radius: 10px;
     /* border-bottom: 2px solid black; */
 }
 

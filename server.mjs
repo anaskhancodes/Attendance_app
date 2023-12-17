@@ -7,6 +7,7 @@ import postRouter from './Api v1/Routs/post.mjs'
 import feedRouter from './Api v1/Routs/feed.mjs'
 import comentsRouter from './Api v1/Routs/comments.mjs'
 import autsRouter from './Api v1/Routs/auth.mjs'
+import stdCheck from './Api v1/Routs/post-portal.mjs'
 import "dotenv/config"
 import cookieParser from 'cookie-parser'
 import jwt from 'jsonwebtoken';
@@ -51,6 +52,7 @@ app.use((req, res, next) => {
 app.use('/api/v1', postRouter);
 app.use('/api/v1', comentsRouter);
 app.use('/api/v1', feedRouter);
+app.use('/api/v1', stdCheck);
 
 
 
