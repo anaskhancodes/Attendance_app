@@ -10,17 +10,17 @@ let router = express.Router();
 //////
 router.post("/poststd", async (req, res, next) => {
     try {
-        if (!req.body.firstName || !req.body.lastName || !req.body.course || !req.body.id || !req.body.date) {
+        if ( !req.body.id) {
             res.status(400).send("Required parameters are missing");
             return;
         }
 
         const insertResponse = await col.insertOne({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            course: req.body.course,
+            // firstName: req.body.firstName,
+            // lastName: req.body.lastName,
+            // course: req.body.course,
             id: req.body.id,
-            date: req.body.date,
+            // date: req.body.date,
             from: req.body.decoded.email,
             createdOn: new Date()
         });

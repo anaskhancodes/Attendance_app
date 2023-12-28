@@ -17,11 +17,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            /* background-color: #fff; */
             padding: 20px;
-            /* border: 1px solid #ccc; */
             z-index: 999;
-            /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
         }
 
         /* Show the popup form */
@@ -43,10 +40,6 @@
 </head>
 
 <body onload="getAllPost()">
-
-
-    <!-- <button class="del-btn" onclick="delPost('${eachPost._id}')">Delete</button>
-    <button class="edit-btn" onclick="editPost('${eachPost._id}','${eachPost.text}','${eachPost.title}')">Edit</button> -->
     <div class="user-attendence">
         <h2><i class="fa-regular fa-user" style="color: #ffffff;"></i> Student</h2>
         <button class="toggle-btn" onclick="toggleForm()">Add Student</button>
@@ -54,43 +47,36 @@
 
     <div id="popupForm" class="popup-form">
         <form class="form" onsubmit="createPost(); return false">
-            <label for="firstName">First name</label>
-            <br>
-            <input name="" type="text" id="firstName">
-            <br>
 
-            <label for="lastName">Last name</label>
-            <br>
-            <input type="text" id="lastName">
+            <!-- <label for="">ID</label><br>
+            <input type="number" name="" id="ID"> -->
 
-            <label for="">course</label>
-            <br>
+            <label for="fullName">Full name</label><br>
+            <input name="" type="text" id="fullName"><br>
+
+            <label for="">course</label><br>
             <input type="text" name="" id="course">
 
-            <label for="">email</label>
-            <br>
+            <label for="">email</label><br>
             <input type="email" name="" id="email">
 
 
             <br><br>
 
-            <button type="submit">Add</button>
+            <button type="submit">Add Student</button>
 
             <br>
             <br>
         </form>
     </div>
 
-    <!-- <div class="user-attendence">
-        <h2> <i class="fa-regular fa-user" style="color: #ffffff;"></i> Student </h2>
-        <a href="./add-student.html"><i class="fa-solid fa-plus" style="color: rgb(0, 89, 255);"></i> Add Student</a>
-    </div> -->
     <div class="list">
-        <p>id</p>
-        <p>Profil img</p>
-        <p>Name</p>
-        <p>Course Name</p>
-        <p>Email</p>
+        <p class="list-ID">ID</p>
+        <p class="list-img">Profil img</p>
+        <p class="list-name">Name</p>
+        <p class="list-course">Course Name</p>
+        <p class="list-email">Email</p>
+        <p></p>
     </div>
 
     <div id="result"></div>
@@ -103,6 +89,29 @@
 
     <script>
 
+        // function generateRandomID() {
+        //     const storedID = localStorage.getItem('randomID');
+        //     console.log('Stored ID:', storedID);
+
+        //     if (storedID) {
+        //         return parseInt(storedID, 10);
+        //     } else {
+        //         const randomID = Math.floor(Math.random() * 1000) + 1;
+        //         console.log('Generated Random ID:', randomID);
+
+        //         localStorage.setItem('randomID', randomID.toString());
+        //         return randomID;
+        //     }
+        // }
+
+        // const randomID = generateRandomID();
+        // console.log('Final Random ID:', randomID);
+
+        function generateRandomID() {
+            return Math.floor(Math.random() * 1000) + 1;
+        }
+
+
         function toggleForm() {
             const popup = document.getElementById('popupForm');
             popup.classList.toggle('show-form');
@@ -110,16 +119,18 @@
 
         window.createPost = function () {
 
-            let firstName = document.querySelector("#firstName").value;
-            let lastName = document.querySelector("#lastName").value;
+            let fullName = document.querySelector("#fullName").value;
+            // let lastName = document.querySelector("#lastName").value;
             let email = document.querySelector("#email").value;
             let course = document.querySelector("#course").value;
+            let id = generateRandomID();
 
 
-           axios.post(`/api/v1/post`, {
-                firstName: firstName,
-                lastName: lastName,
-                 course: course,
+            axios.post(`/api/v1/post`, {
+                fullName: fullName,
+                // lastName: lastName,
+                course: course,
+                id: id,
                 email: email,
             })
                 .then(function (response) {
@@ -148,24 +159,21 @@
                     let postHTML = ``
                     // 
                     response.data.map((eachPost) => {
-                        const timeAgo = moment(eachPost.createdOn).fromNow();
+                        // const timeAgo = moment(eachPost.createdOn).fromNow();
 
-                        // <div class="title-time">
-                        //             <h2 class="post-title">${eachPost.firstName} </h2>
-                        //             <p class="post-time">${timeAgo}</p>
-                        //         </div>
-                        //         <p class="post-text">${eachPost.lastName}</p> 
-                        //         <p class="post-text">${eachPost.email}</p> 
-                        //         <p class="post-text">${eachPost.course}</p> 
-                        //         </br>
-
+                        // <p id="stdID" class="std-ID">${randomID}</p>
                         postHTML +=
                             `<div class="std-list" id="card-${eachPost._id}">
-                                <p>1</p>
-                                <p><i class="fa-regular fa-user" style="color: #ffff;"></i></p>
-                                  <p>${eachPost.firstName}</p>
-                                 <p>${eachPost.course}</p>
-                                 <p>${eachPost.email}</p>
+                                <p id="stdID" class="std-ID">${eachPost.id}</p>
+                                <p class="img"> <i class="fa-regular fa-user" style="color: #fff; background-color:#1a77f3; padding:10px; border-radius: 20px; margin-top: -10px;"></i></p>
+                                <p class="std-fullName">${eachPost.fullName}</p>
+                                <p class="std-course">${eachPost.course}</p>
+                                <p class="std-email">${eachPost.email}</p>
+                              <div class="edit-dle">
+                                <button class="edit-btn" onclick="editPost('${eachPost._id}','${eachPost.fullName}','${eachPost.course}',
+                                '${eachPost.email}')"><i class="fa-solid fa-pen" style="color: #00ff04;"></i></button>
+                                <button class="del-btn" onclick="delPost('${eachPost._id}')"><i class="fa-solid fa-trash-can" style="color: #ff0000;"></i></button>
+                              </div>
                             </div>
                             <br />`
                     })
@@ -204,29 +212,36 @@
                 })
         }
 
-        window.editPost = (postId, text, title) => {
+        window.editPost = (postId, fullName, course, email) => {
 
             console.log("edit", postId);
 
             document.querySelector(`#card-${postId}`).innerHTML =
                 `<form class="edit-form" onsubmit="savePost('${postId}')">
-
-                    Title: <input type = "text" value ="${title}" id="title-${postId}"/>  
+                    <input type = "text" value ="${fullName}" id="fullName-${postId}"/>  
                     <br />  
-                    Text: <input type = "text" value ="${text}" id="text-${postId}"/>
+                    <input type = "text" value ="${course}" id="course-${postId}"/>
+                    <br />  
+                    <input type = "email" value ="${email}" id="email-${postId}"/>
                     <br />  
                     <button>Save</button>
               </form>`
         }
 
         window.savePost = (postId) => {
-            const updatedFirstName = document.querySelector(`#firstname-${postId}`).value;
-            const updatedLastName = document.querySelector(`#lastname-${postId}`).value;
+            // const updatedID = document.querySelector(`#ID-${postId}`).value;
+            const updatedFullName = document.querySelector(`#fullName-${postId}`).value;
+            // const updatedLastName = document.querySelector(`#lastName-${postId}`).value;
+            const updatedCourse = document.querySelector(`#course-${postId}`).value;
+            const updatedEmail = document.querySelector(`#email-${postId}`).value;
 
 
             axios.put(`/api/v1/post/${postId}`, {
-                title: updatedFirstName,
-                text: updatedLastName
+                // id: updatedID,
+                fullName: updatedFullName,
+                // lastName: updatedLastName,
+                course: updatedCourse,
+                email: updatedEmail,
             })
 
                 .then(function (response) {
@@ -244,8 +259,8 @@
         }
 
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="updateName.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script> -->
+
 </body>
 
 </html>

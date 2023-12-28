@@ -4,7 +4,7 @@ import { stringToHash, verifyHash, validateHash } from "bcrypt-inzi";
 import jwt from 'jsonwebtoken';
 
 
-const userCollection = client.db("crudDb").collection("users");
+const userCollection = client.db("Attendance").collection("Student_check_out");
 let router = express.Router();
 
 // Regular expression for basic email validation

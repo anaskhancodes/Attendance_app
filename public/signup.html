@@ -11,7 +11,7 @@
 <body>
 
     <div>
-        <h1>Signup</h1>
+        <h1>Student Portal</h1>
 
         <form id="signupInput">
             <br>
@@ -33,6 +33,12 @@
             <br>
             <br>
             <br>
+            <label for="email">ID</label><br>
+            <input type="text" name="email" id="ID" placeholder="ID">
+
+            <br>
+            <br>
+            <br>
             <label for="password">Password</label><br>
             <input type="password" name="password" id="password" placeholder="Password">
 
@@ -41,9 +47,11 @@
             <br>
 
             <button onclick="userName()" type="submit">Signup</button>
+            <!-- <a href="./std-por.html">Student Logn</a> -->
 
             <br>
             <br>
+            <a href="./login.html">I'm Admin</a>
         </form>
     </div>
 
@@ -55,7 +63,8 @@
 
             const firstName = document.querySelector("#firstName").value;
             const lastName = document.querySelector("#lastName").value;
-            const email = document.querySelector("  #email").value;
+            const email = document.querySelector("#email").value;
+            const id = document.querySelector("#ID").value;
             const password = document.querySelector("#password").value;
 
             try {

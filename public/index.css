@@ -1,25 +1,3 @@
-body {
-    /* background: linear-gradient(-40deg, rgb(12, 3, 61),
-            rgb(5, 51, 63), rgb(17, 69, 82), rgb(32, 80, 48), rgb(2, 93, 116));
-    background-size: 400% 400%;
-    animation: bg 12s ease infinite; */
-    /* background-color: rgba(0, 0, 0, 0.445); */
-}
-
-@keyframes bg {
-    0% {
-        background-position: 0% 50%;
-    }
-
-    50% {
-        background-position: 100% 100%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-
-}
 
 .post-card {
     background-color: rgb(36, 37, 38);
@@ -97,19 +75,21 @@ form button {
 }
 
 .del-btn {
-    padding: 10px;
-    background-color: red;
+    /* padding: 10px;
     color: white;
+    border: none; */
+    background-color: white;
     border: none;
     cursor: pointer;
 }
 
 .edit-btn {
-    padding: 10px;
-    background-color: rgb(3, 255, 3);
+    /* padding: 10px;
     color: rgb(0, 0, 0);
     border: none;
-    width: 60px;
+    width: 60px; */
+    background-color: white;
+    border: none;
     cursor: pointer;
 }
 
@@ -122,4 +102,33 @@ form button {
     flex-direction: column;
     align-items: center;
     padding: 10px;
+}
+
+.std-list p{
+    /* background-color: aqua; */
+    width: 145px;
+    padding: 10px;
+    margin-left: 22px;
+}
+
+.list p{
+    /* background-color: blue; */
+    margin-left: -34px;
+}
+
+.list .list-img{
+    margin-left: 10px;
+}
+
+.edit-dle{
+    /* background-color: cadetblue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 65px;
+}
+
+.img{
+    /* background-color: #1a77fe; */
+    margin-left: 37px;
 }

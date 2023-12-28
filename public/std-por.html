@@ -70,7 +70,7 @@
         <h1>Attendance Mark</h1>
 
         <form class="form" onsubmit="createPost(); return false">
-            <label for="firstName">First name</label>
+            <!-- <label for="firstName">First name</label>
             <br>
             <input name="" type="text" id="firstName">
             <br><br>
@@ -81,15 +81,16 @@
 
             <label for="">course</label>
             <br>
-            <input type="text" name="" id="course"><br><br>
+            <input type="text" name="" id="course"><br><br> -->
 
-            <label for="">ID</label>
-            <br>
-            <input type="text" name="" id="ID"><br><br>
+            <!-- <br><br>
             <label for="">Date</label>
             <br>
-            <input type="date" name="" id="date">
-
+            <input type="date" name="" id="date"> -->
+            <label for="">ID</label>
+            <br>
+            <input type="text" name="" id="ID">
+            
             <br><br>
 
             <button type="submit">Check IN</button>
@@ -108,18 +109,18 @@
     <script>
         window.createPost = function () {
 
-            let firstName = document.querySelector("#firstName").value;
-            let lastName = document.querySelector("#lastName").value;
+            // let firstName = document.querySelector("#firstName").value;
+            // let lastName = document.querySelector("#lastName").value;
+            // let course = document.querySelector("#course").value;
             let id = document.querySelector("#ID").value;
-            let course = document.querySelector("#course").value;
-            let date = document.querySelector("#date").value;
+            // let date = document.querySelector("#date").value;
 
             axios.post(`/api/v1/poststd`, {
-                firstName: firstName,
-                lastName: lastName,
+                // firstName: firstName,
+                // lastName: lastName,
                 id: id,
-                course: course,
-                date: date,
+                // course: course,
+                // date: date,
             })
 
                 .then(function (response) {

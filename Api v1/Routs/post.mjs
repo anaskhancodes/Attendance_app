@@ -13,14 +13,14 @@ let router = express.Router();
 
 router.post("/post", async (req, res, next) => {
     try {
-        if (!req.body.firstName || !req.body.lastName || !req.body.course || !req.body.email) {
+        if (!req.body.fullName || !req.body.course || !req.body.email || !req.body.id) {
             res.status(400).send("Required parameters are missing");
             return;
         }
 
         const insertResponse = await col.insertOne({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
+            id: req.body.id,
+            fullName: req.body.fullName,
             course: req.body.course,
             email: req.body.email,
             from: req.body.decoded.email,
@@ -82,14 +82,17 @@ router.put("/post/:postId", async (req, res, next) => {
         return;
     }
 
-    if (!req.body.title && !req.body.text) {
-        res.status(400).send('Post ID, title, and text must be provided.');
+   if (!req.body.fullName && !req.body.course && !req.body.email) {
+        res.status(400).send('');
         return;
     }
 
     let dataUpdated = {};
-    if (req.body.title) { dataUpdated.title = req.body.title };
-    if (req.body.text) { dataUpdated.text = req.body.text };
+    if (req.body.fullName) { dataUpdated.fullName = req.body.fullName };
+    // if (req.body.lastName) { dataUpdated.lastName = req.body.lastName };
+    // if (req.body.id) { dataUpdated.id = req.body.id };
+    if (req.body.course) { dataUpdated.course = req.body.course };
+    if (req.body.email) { dataUpdated.email = req.body.email };
 
     try {
         const updateResponse = await col.updateOne(
