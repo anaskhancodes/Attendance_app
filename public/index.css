@@ -1,4 +1,28 @@
+.popup-form {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    z-index: 999;
+}
 
+/* Show the popup form */
+.popup-form.show-form {
+    display: block;
+}
+
+.toggle-btn {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: rgb(0, 89, 255);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+}
 .post-card {
     background-color: rgb(36, 37, 38);
     color: white;
@@ -109,10 +133,12 @@ form button {
     width: 145px;
     padding: 10px;
     margin-left: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .list p{
     /* background-color: blue; */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-left: -34px;
 }
 
@@ -131,4 +157,52 @@ form button {
 .img{
     /* background-color: #1a77fe; */
     margin-left: 37px;
+}
+
+
+.confirmation-modal {
+    border: 1px solid #1a77fe;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed; /* Use fixed position for modals */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    z-index: 999; /* Add z-index to ensure it appears on top of other elements */
+}
+
+.btn-box {
+    display: flex;
+    justify-content: space-around;
+    width: 430px;
+}
+
+.btn-box #confirmBtn {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    width: 90px;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.btn-box #cancelBtn {
+    background-color: #1a77fe;
+    color: white;
+    padding: 10px;
+    width: 90px;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+}
+
+.message {
+    font-size: x-large;
+    font-family: sans-serif;
+    margin-bottom: 20px; /* Adjust margin as needed */
 }
